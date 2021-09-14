@@ -1,0 +1,1 @@
+# Fuzzy-Tsukamoto_Algoritm
