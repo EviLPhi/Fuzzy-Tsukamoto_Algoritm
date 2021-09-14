@@ -1,0 +1,193 @@
+#:kivy 1.0
+#:import kivy kivy
+<Main>:
+<Home>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 0.05 * root.width
+        spacing: 5
+        Label:
+            text:  '[size=50]METODE TSUKAMOTO [/size][size= 30]UNTUK MENENTUKAN KUALITAS HOTEL[/size]'
+            halign: 'center'
+            valign: 'middle'
+            text_size: 600, None
+            markup : True
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: 0.05 * root.width
+            spacing: 5
+            Button:
+                id: input
+                text: 'Input Data'
+                size_hint: .5,1
+                on_press: root.pindah_input()
+            Button:
+                id: batas
+                size_hint: .5,1
+                text: 'Ubah Batas'
+                on_press: root.pindah_batas()
+<Input>:
+    BoxLayout :
+        orientation : 'vertical'
+        padding: 0.05 * root.width
+        spacing: 5
+        GridLayout :
+            spacing: 10
+            cols : 2
+            Label :
+                text : "Nama Hotel"
+                size_hint: None,None
+                size: 0.45 * root.width, 0.1 * root.height
+            TextInput:
+                id: nama
+                size_hint: None,None
+                multiline:False
+                on_touch_down: if self.collide_point(*args[1].pos): self.text = ""
+                size: 0.45 * root.width, 0.1 * root.height
+
+            Label :
+                text : "Kelas Kamar (0-20)"
+                size_hint: None,None
+                size: 0.45 * root.width, 0.1 * root.height
+            TextInput:
+                id: kelas
+                size_hint: None,None
+                multiline:False
+                on_touch_down: if self.collide_point(*args[1].pos): self.text = ""
+                size: 0.45 * root.width, 0.1 * root.height
+
+            Label :
+                text : "Banyak Fasilitas Hotel (0-20)"
+                size_hint: None,None
+                size: 0.45 * root.width, 0.1 * root.height
+            TextInput:
+                id: fasilitas
+                size_hint: None,None
+                multiline:False
+                on_touch_down: if self.collide_point(*args[1].pos): self.text = ""
+                size: 0.45 * root.width, 0.1 * root.height
+
+            Label :
+                text : "Harga Hotel (0 - 2000000)"
+                size_hint: None,None
+                size: 0.45 * root.width, 0.1 * root.height
+            TextInput:
+                id: harga
+                size_hint: None,None
+                multiline:False
+                on_touch_down: if self.collide_point(*args[1].pos): self.text = ""
+                size: 0.45 * root.width, 0.1 * root.height
+
+            Button:
+                text: 'Kembali'
+                size_hint: None,None
+                size: 0.45 * root.width, 0.1 * root.height
+                on_press: root.kembali()
+            Button:
+                id: hitung
+                text: 'Hitung'
+                size_hint: None,None
+                size: 0.45 * root.width, 0.1 * root.height
+                on_press: root.cetak()
+
+            Label :
+                text : root.cek1
+            Label :
+                text : root.cek2
+
+<Batas>:
+    on_enter :
+        kelas_1.text = root.a
+        kelas_2.text = root.b
+        fas_1.text = root.c
+        fas_2.text = root.d
+        fas_3.text = root.e
+        fas_4.text = root.f
+        har_1.text = root.g
+        har_2.text = root.h
+        har_3.text = root.i
+        har_4.text = root.j
+    BoxLayout :
+        orientation : 'vertical'
+        padding: 0.05 * root.width
+        spacing: 5
+        Label :
+            text : "Batas Kelas Kamar"
+        BoxLayout :
+            orientation : 'horizontal'
+            TextInput:
+                id: kelas_1
+                halign: 'center'
+                valign: 'middle'
+                multiline:False
+            TextInput:
+                id: kelas_2
+                halign: 'center'
+                valign: 'middle'
+                multiline:False
+
+        Label :
+            text : "Batas Fasilitas Hotel"
+        BoxLayout :
+            orientation : 'horizontal'
+            TextInput:
+                id: fas_1
+                halign: 'center'
+                valign: 'middle'
+                multiline:False
+            TextInput:
+                id: fas_2
+                halign: 'center'
+                valign: 'middle'
+                multiline:False
+            TextInput:
+                id: fas_3
+                halign: 'center'
+                valign: 'middle'
+                multiline:False
+            TextInput:
+                id: fas_4
+                halign: 'center'
+                valign: 'middle'
+                multiline:False
+
+        Label :
+            text : "Batas Harga Hotel"
+        BoxLayout :
+            orientation : 'horizontal'
+            TextInput:
+                halign: 'center'
+                valign: 'middle'
+                id: har_1
+                multiline:False
+            TextInput:
+                halign: 'center'
+                valign: 'middle'
+                id: har_2
+                multiline:False
+            TextInput:
+                halign: 'center'
+                valign: 'middle'
+                id: har_3
+                multiline:False
+            TextInput:
+                halign: 'center'
+                valign: 'middle'
+                id: har_4
+                multiline:False
+        BoxLayout :
+            padding: 0.01 * root.width
+            spacing :5
+            orientation : 'horizontal'
+            Button:
+                size_hint: .5,1
+                text: 'Kembali'
+                on_press: root.kembali()
+            Button:
+                size_hint: .5,1
+                text: 'Default'
+                on_press: root.default()
+            Button:
+                size_hint: .5,1
+                text: 'Simpan'
+                on_press: root.save()
